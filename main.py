@@ -17,6 +17,7 @@ def main():
                 return
 
         screen.fill('black')
+        player.update(dt)    #turn
         player.draw(screen)
         pg.display.flip()
 
