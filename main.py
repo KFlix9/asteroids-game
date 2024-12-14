@@ -11,18 +11,15 @@ def main():
     screen = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pg.time.Clock()
 
-    asteroids = pg.sprite.Group()
-
     updatable = pg.sprite.Group()
     drawable = pg.sprite.Group()
+    asteroids = pg.sprite.Group()
 
-
-    Player.containers = (updatable, drawable) 
     Asteroid.containers = (asteroids, updatable, drawable) 
-    AsteroidField.containers = (updatable,)
-
+    AsteroidField.containers = updatable
     asteroidfield = AsteroidField() 
 
+    Player.containers = (updatable, drawable) 
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2) 
 
     dt = 0
