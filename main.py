@@ -2,6 +2,8 @@ import pygame as pg
 from pygame.locals import *
 from constants import *
 from player import *
+from asteroid import *
+from asteroidfield import *
 
 
 def main():
@@ -9,10 +11,17 @@ def main():
     screen = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pg.time.Clock()
 
+    asteroids = pg.sprite.Group()
+
     updatable = pg.sprite.Group()
     drawable = pg.sprite.Group()
 
+
     Player.containers = (updatable, drawable) 
+    Asteroid.containers = (asteroids, updatable, drawable) 
+    AsteroidField.containers = (updatable,)
+
+    asteroidfield = AsteroidField() 
 
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2) 
 
@@ -29,7 +38,7 @@ def main():
         screen.fill('black')
 
         for entity in drawable:
-            player.draw(screen)
+            entity.draw(screen)
 
         pg.display.flip()
 
