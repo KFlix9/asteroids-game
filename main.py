@@ -8,10 +8,14 @@ def main():
     pg.init()
     screen = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pg.time.Clock()
+
     updatable = pg.sprite.Group()
     drawable = pg.sprite.Group()
+
     Player.containers = (updatable, drawable) 
+
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2) 
+
     dt = 0
 
     while True:
@@ -23,8 +27,10 @@ def main():
             entity.update(dt)
 
         screen.fill('black')
+
         for entity in drawable:
             player.draw(screen)
+
         pg.display.flip()
 
         # limit FPS rate, we don't need the delta (dt) for now
