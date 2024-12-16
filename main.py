@@ -6,6 +6,7 @@ from constants import *
 from player import *
 from asteroid import *
 from asteroidfield import *
+from shot import *
 
 
 def main():
@@ -16,10 +17,12 @@ def main():
     updatable = pg.sprite.Group()
     drawable = pg.sprite.Group()
     asteroids = pg.sprite.Group()
+    shots = pg.sprite.Group()
 
     Asteroid.containers = (asteroids, updatable, drawable) 
     AsteroidField.containers = updatable
     asteroidfield = AsteroidField() 
+    Shot.containers = (shots, updatable, drawable) 
 
     Player.containers = (updatable, drawable) 
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2) 
